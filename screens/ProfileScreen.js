@@ -56,12 +56,12 @@ const ProfileScreen = ({navigation, route}) => {
                     activeOpacity={0.7}
                     onPress={addAvatar}
                 >
-                <Avatar.Accessory size="medium">
+                <Avatar.Accessory>
                     <Avatar rounded icon={{ name: 'home' }} />
                 </Avatar.Accessory>
                 </Avatar>
-                <Input style={styles.inputContainer} placeholder="Password:" secureTextEntry type="text" value={password} onChangeText={text => setPassword(text)} />
-                <Input style={styles.inputContainer} placeholder="Confirm Password:" secureTextEntry type="text" value={confirmPassword} onChangeText={text => setConfirmPassword(text)} />
+                <Input style={styles.inputContainer} placeholder="Password:" secureTextEntry value={password} onChangeText={text => setPassword(text)} />
+                <Input style={styles.inputContainer} placeholder="Confirm Password:" secureTextEntry value={confirmPassword} onChangeText={text => setConfirmPassword(text)} />
                 
                 <View style={{ height: 50}} />
 
