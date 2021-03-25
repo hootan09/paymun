@@ -1,0 +1,56 @@
+import React, {useState, useEffect} from 'react'
+
+import { StyleSheet, Text, View, KeyboardAvoidingView } from 'react-native'
+import { Button, Input, Image } from 'react-native-elements'
+
+const SignInScreen = ({navigation}) => {
+    
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [password, setPassword] = useState('');
+
+    useEffect(() => {
+        //already signin and have token
+        // if(have token){
+            // navigation.replace("Home");
+        // }
+    }, []);
+
+    const signIn = () =>{
+        console.log(phoneNumber, password);
+        //if is password ok send to home
+        navigation.replace("Home");
+    }
+
+    return (
+        <KeyboardAvoidingView behavior="padding" style={styles.container}>
+            <Image source={{ uri: 'https://www.freepnglogos.com/uploads/instagram-logos-png-images-free-download-2.png'}} style={{ width:200, height: 200}} />
+            <View style= {styles.inputContainer}>
+                <Input placeholder= "Phone Number:" autoFocus value={phoneNumber} onChangeText={text =>setPhoneNumber(text)}/>
+                <Input placeholder= "Password:" type="password" secureTextEntry value={password} onChangeText={text =>setPassword(text)}/>
+                <View style={{ height: 50}} />
+            </View>
+
+            <Button containerStyle={styles.button} onPress={signIn} title="SignIn" />
+            <Button containerStyle={styles.button} onPress={()=>{navigation.navigate('SignUp')}} type="outline" title="SignUp" />
+        </KeyboardAvoidingView>
+    )
+}
+
+export default SignInScreen
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 10,
+        backgroundColor: 'white'
+    },
+    inputContainer: {
+        width: 300
+    },
+    button: {
+        width: 200,
+        marginTop: 10
+    }
+})
