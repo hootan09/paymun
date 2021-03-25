@@ -1,10 +1,11 @@
 import React from 'react'
 import { StyleSheet, Text, View, Button } from 'react-native'
+import TopHeader from '../components/TopHeader'
 
 const TestScreen = ({navigation}) => {
     return (
         <View>
-            <Button onPress={() => navigation.toggleDrawer()} title="Toggle Drawer in Test Screen" />
+            <TopHeader navigation={navigation} title="Test"/>
         </View>
     )
 }

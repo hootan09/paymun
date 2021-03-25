@@ -9,6 +9,7 @@ import SignInScreen from './screens/SignInScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import HomeScreen from './screens/HomeScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import MainScreen from './screens/MainScreen';
 
 const Stack = createStackNavigator();
 
@@ -23,7 +24,7 @@ export default function App() {
     <NavigationContainer>
       <StatusBar style="light" />
       <Stack.Navigator screenOptions={globalScreenOptions}>
-
+        <Stack.Screen name="Main" component={MainScreen} />
         <Stack.Screen name="SignIn" component={SignInScreen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
