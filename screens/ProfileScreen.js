@@ -1,11 +1,13 @@
 import React, {useState} from 'react'
 import { StyleSheet, View, KeyboardAvoidingView } from 'react-native'
 import { Text, Avatar, Input, Button } from 'react-native-elements'
+import * as ImagePicker from 'expo-image-picker';
 
 const ProfileScreen = ({navigation, route}) => {
     
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const [avatar, setAvatar] = useState('https://www.clipartmax.com/png/small/268-2688863_face-head-male-man-person-profile-silhouette-profile-silhouette.png');
 
     const submitProfile = () => {
         if(password != confirmPassword){
@@ -13,6 +15,27 @@ const ProfileScreen = ({navigation, route}) => {
             return;
         }
         console.log('submitProfile')
+        //if update is seccessful then go back to login
+        navigation.reset({
+            index: 0,
+            routes: [{ name: "SignIn" }],
+          });
+    }
+
+    const addAvatar = async () =>{
+        console.log('addAvatar');
+            let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        
+            if (permissionResult.granted === false) {
+              alert("Permission to access camera roll is required!");
+              return;
+            }
+        
+            let pickerResult = await ImagePicker.launchImageLibraryAsync();
+            if (pickerResult.cancelled === true) {
+                return;
+            }
+            setAvatar(pickerResult.uri);
     }
 
     return (
@@ -24,11 +47,10 @@ const ProfileScreen = ({navigation, route}) => {
                 rounded
                 size="xlarge"
                 source={{
-                    uri:
-                    'https://www.clipartmax.com/png/small/268-2688863_face-head-male-man-person-profile-silhouette-profile-silhouette.png',
+                    uri: avatar
                 }}
                 activeOpacity={0.7}
-                onPress={() => console.log("Works!")}
+                onPress={addAvatar}
             >
             <Avatar.Accessory size="medium">
                 <Avatar rounded icon={{ name: 'home' }} />
@@ -56,7 +78,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     avatar:{
-        padding: 10
+        padding: 10,
+        width: 200,
+        height:200
     },
     inputContainer:{
         width: 300

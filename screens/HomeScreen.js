@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-elements';
 
 const HomeScreen = () => {
-    alert("Hello Home!!");
+    // alert("Hello Home!!");
     return (
         <View>
             <Text h1>Home</Text>
