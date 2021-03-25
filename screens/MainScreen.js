@@ -6,6 +6,8 @@ import {Icon} from 'react-native-elements';
 
 import TestScreen from './TestScreen';
 import HomeScreen from './HomeScreen';
+import ProfileScreen from './ProfileScreen';
+
 
 const Drawer = createDrawerNavigator();
 
@@ -26,8 +28,9 @@ const MainScreen = ({navigation}) => {
 
     return (
         <Drawer.Navigator>
-            <Drawer.Screen name="HomeScreen" component={HomeScreen} />
-            <Drawer.Screen name="TestScreen" component={TestScreen} />
+            <Drawer.Screen name="Home" component={HomeScreen} />
+            <Drawer.Screen name="Profile" component={ProfileScreen} />
+            <Drawer.Screen name="Test" component={TestScreen} />
         </Drawer.Navigator>
     )
 }

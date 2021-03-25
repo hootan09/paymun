@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { StyleSheet, View, KeyboardAvoidingView } from 'react-native'
 import { Text, Avatar, Input, Button } from 'react-native-elements'
 import * as ImagePicker from 'expo-image-picker';
+import TopHeader from '../components/TopHeader';
 
 const ProfileScreen = ({navigation, route}) => {
     
@@ -20,6 +21,7 @@ const ProfileScreen = ({navigation, route}) => {
             index: 0,
             routes: [{ name: "SignIn" }],
           });
+
     }
 
     const addAvatar = async () =>{
@@ -39,31 +41,33 @@ const ProfileScreen = ({navigation, route}) => {
     }
 
     return (
+        <>
+        {navigation.toggleDrawer && <TopHeader navigation={navigation} title="Profile"/>}
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
-            <Text h3>User Profile</Text>
-            <Text h5>PhoneNumber: {route?.params?.phoneNumber}</Text>
-            <Avatar
-                containerStyle={styles.avatar}
-                rounded
-                size="xlarge"
-                source={{
-                    uri: avatar
-                }}
-                activeOpacity={0.7}
-                onPress={addAvatar}
-            >
-            <Avatar.Accessory size="medium">
-                <Avatar rounded icon={{ name: 'home' }} />
-            </Avatar.Accessory>
-            </Avatar>
-            <Input style={styles.inputContainer} placeholder="Password:" secureTextEntry type="text" value={password} onChangeText={text => setPassword(text)} />
-            <Input style={styles.inputContainer} placeholder="Confirm Password:" secureTextEntry type="text" value={confirmPassword} onChangeText={text => setConfirmPassword(text)} />
-            
-            <View style={{ height: 50}} />
+                <Text h3>User Profile</Text>
+                <Text h5>PhoneNumber: {route?.params?.phoneNumber}</Text>
+                <Avatar
+                    containerStyle={styles.avatar}
+                    rounded
+                    size="xlarge"
+                    source={{
+                        uri: avatar
+                    }}
+                    activeOpacity={0.7}
+                    onPress={addAvatar}
+                >
+                <Avatar.Accessory size="medium">
+                    <Avatar rounded icon={{ name: 'home' }} />
+                </Avatar.Accessory>
+                </Avatar>
+                <Input style={styles.inputContainer} placeholder="Password:" secureTextEntry type="text" value={password} onChangeText={text => setPassword(text)} />
+                <Input style={styles.inputContainer} placeholder="Confirm Password:" secureTextEntry type="text" value={confirmPassword} onChangeText={text => setConfirmPassword(text)} />
+                
+                <View style={{ height: 50}} />
 
-            <Button containerStyle={styles.button} raised onPress={submitProfile} title="Submit" />
-
+                <Button containerStyle={styles.button} raised onPress={submitProfile} title="Submit" />
         </KeyboardAvoidingView>
+        </>
     )
 }
 

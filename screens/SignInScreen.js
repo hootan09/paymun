@@ -11,7 +11,7 @@ const SignInScreen = ({navigation}) => {
     useEffect(() => {
         //already signin and have token
         // if(have token){
-            navigation.replace("Home");
+            // navigation.replace("Home");
             // navigation.replace("Profile");
         // }
     }, []);
@@ -19,7 +19,7 @@ const SignInScreen = ({navigation}) => {
     const signIn = () =>{
         console.log(phoneNumber, password);
         //if is password ok send to home
-        navigation.replace("Home");
+        navigation.replace("Main");
     }
 
     return (
