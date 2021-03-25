@@ -12,6 +12,7 @@ const SignInScreen = ({navigation}) => {
         //already signin and have token
         // if(have token){
             // navigation.replace("Home");
+            navigation.replace("Profile");
         // }
     }, []);
 

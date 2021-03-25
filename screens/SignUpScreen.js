@@ -30,7 +30,9 @@ const SignUpScreen = ({navigation}) => {
     
     const sendPhoneNumber = () =>{
         console.log(phoneNumber, verifyCode)
-        timerInstans = timer(15);
+        setTimerInstant(timerInstant => {
+            timerInstant = timer(15);
+        }) 
 
     };
 
@@ -41,7 +43,7 @@ const SignUpScreen = ({navigation}) => {
         clearTimeout(timerInstant.timeout);
         navigation.reset({
               index: 0,
-              routes: [{ name: "Profile" }],
+              routes: [{ name: "Profile", params: {phoneNumber} }],
             });
     };
 
