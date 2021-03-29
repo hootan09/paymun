@@ -6,6 +6,7 @@ import TopHeader from '../components/TopHeader';
 
 const ProfileScreen = ({navigation, route}) => {
     
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [avatar, setAvatar] = useState('https://www.clipartmax.com/png/small/268-2688863_face-head-male-man-person-profile-silhouette-profile-silhouette.png');
@@ -60,6 +61,7 @@ const ProfileScreen = ({navigation, route}) => {
                     <Avatar rounded icon={{ name: 'home' }} />
                 </Avatar.Accessory>
                 </Avatar>
+                <Input style={styles.inputContainer} placeholder="Email:" type="mail" disabled={true} value={email} onChangeText={text => setEmail(text)} />
                 <Input style={styles.inputContainer} placeholder="Password:" secureTextEntry value={password} onChangeText={text => setPassword(text)} />
                 <Input style={styles.inputContainer} placeholder="Confirm Password:" secureTextEntry value={confirmPassword} onChangeText={text => setConfirmPassword(text)} />
                 
@@ -87,7 +89,8 @@ const styles = StyleSheet.create({
         height:200
     },
     inputContainer:{
-        width: 300
+        width: 300,
+        marginTop:10
     },
     button: {
         width: 200,
