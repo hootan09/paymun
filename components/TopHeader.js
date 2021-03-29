@@ -1,8 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Alert, Image, View, Text, TouchableOpacity, Platform } from 'react-native';
 import 'react-native-gesture-handler';
 import Menu, {MenuItem, MenuDivider} from 'react-native-material-menu';
-import {Header} from 'react-native-elements'
+import {Header, Avatar, Icon} from 'react-native-elements'
 
 export default function TopHeader({navigation, title}) {
 
@@ -11,19 +11,33 @@ export default function TopHeader({navigation, title}) {
         leftComponent={{ icon: 'menu', color: '#fff', onPress:()=>{navigation.toggleDrawer()} }}
             centerComponent={{ text: title, style: { color: '#fff' } }}
             // rightComponent={{ icon: 'home', color: '#fff', onPress:()=>{navigation.replace("Main")} }}
-            rightComponent={<CustomMenu
-                menutext="Menu"
-                menustyle={{marginRight: 14}}
-                textStyle={{color: 'white'}}
-                navigation={navigation}
-                isIcon={true}
-              />}
+            rightComponent={
+                <View style={{flexDirection:'row'}}>
+                    <TaskMenu
+                        menutext="Tasl"
+                        menustyle={{marginRight: 24}}
+                        textStyle={{color: 'white'}}
+                        navigation={navigation}
+                        isIcon={true}
+                    />
+                    <UserMenu
+                        menutext="User"
+                        menustyle={{marginRight: 14}}
+                        textStyle={{color: 'white'}}
+                        navigation={navigation}
+                        isIcon={true}
+                    />
+                </View>
+            }
         />
     )
 }
 
-const CustomMenu = (props) => {
-  let _menu = null;
+const UserMenu = (props) => {
+  
+    const [avatar, setAvatar] = useState('https://www.clipartmax.com/png/small/268-2688863_face-head-male-man-person-profile-silhouette-profile-silhouette.png');
+  
+    let _menu = null;
 
   const LogOut = () =>{
     
@@ -56,15 +70,15 @@ const CustomMenu = (props) => {
         ref={(ref) => (_menu = ref)}
         button={
           props.isIcon ? (
-            <TouchableOpacity onPress={() => _menu.show()}>
-              <Image
-                source={{
-                  uri:
-                    'https://reactnativecode.com/wp-content/uploads/2020/12/menu_icon.png',
-                }}
-                style={{width: 30, height: 30}}
-              />
-            </TouchableOpacity>
+            <Avatar
+                    rounded
+                    size="small"
+                    source={{
+                        uri: avatar
+                    }}
+                    activeOpacity={0.7}
+                    onPress={() => _menu.show()}
+                ></Avatar>
           ) : (
             <Text
               onPress={() => _menu.show()}
@@ -74,7 +88,23 @@ const CustomMenu = (props) => {
           )
         }>
         <MenuItem onPress={() => {props.navigation.navigate("Profile")}}>
-          Settings
+            <View style={{
+                paddingVertical: 15,
+                paddingHorizontal: 10,
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center"
+            }}>
+                <Icon
+                    size={23}
+                    type='font-awesome'
+                    name={Platform.OS === 'android' ? 'cog' : 'cog'}>
+                </Icon>
+                <Text style={{
+                        fontSize: 16,
+                        color: "black"
+                    }}> Settings</Text>
+            </View>
         </MenuItem>
 
         <MenuItem disabled>Disabled Menu Item 2</MenuItem>
@@ -82,10 +112,67 @@ const CustomMenu = (props) => {
         <MenuDivider />
 
         <MenuItem onPress={LogOut}>
-          Logout
+        <View style={{
+                paddingVertical: 15,
+                paddingHorizontal: 10,
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center"
+            }}>
+                <Icon
+                    size={23}
+                    type='font-awesome'
+                    name={Platform.OS === 'android' ? 'sign-out' : 'sign-out'}>
+                </Icon>
+                <Text style={{
+                        fontSize: 16,
+                        color: "black"
+                    }}> Logout</Text>
+            </View>
         </MenuItem>
 
       </Menu>
     </View>
   );
 };
+
+const TaskMenu = (props) => {
+
+    let _menu = null;
+  return (
+    <View style={props.menustyle}>
+      <Menu
+        ref={(ref) => (_menu = ref)}
+        button={
+          props.isIcon ? (
+            <Icon
+            name='plus-circle'
+            type='font-awesome'
+            color='#28a745'
+            size={35}
+            onPress={() => _menu.show()} />
+          ) : (
+            <Text
+              onPress={() => _menu.show()}
+               style={props.textStyle}>
+              {props.menutext}
+            </Text>
+          )
+        }>
+        <MenuItem onPress={() => {props.navigation.navigate("Profile")}}>
+          Test 1
+        </MenuItem>
+
+        <MenuItem disabled>Disabled Menu Item 2</MenuItem>
+
+        <MenuDivider />
+
+        <MenuItem onPress={()=>{}}>
+          Test 3
+        </MenuItem>
+
+      </Menu>
+    </View>
+  );
+};
+

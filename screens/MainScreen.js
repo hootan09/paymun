@@ -93,6 +93,7 @@ const MainScreen = ({navigation}) => {
             options={{
               drawerIcon: () => <Icon
                 size={23}
+                type='font-awesome'
                 name={Platform.OS === 'android' ? 'home' : 'home'}></Icon>
             }} />
             <Drawer.Screen 
@@ -101,16 +102,18 @@ const MainScreen = ({navigation}) => {
               options={{
                 drawerIcon: () => <Icon
                   size={23}
-                  name={Platform.OS === 'android' ? 'star' : 'star'}></Icon>
+                  type='font-awesome'
+                  name={Platform.OS === 'android' ? 'shopping-cart' : 'shopping-cart'}></Icon>
               }} />
-            <Drawer.Screen 
+            {/* <Drawer.Screen 
             name="Profile" 
             component={ProfileScreen}
             options={{
               drawerIcon: () => <Icon
                 size={23}
-                name={Platform.OS === 'android' ? 'star' : 'star'}></Icon>
-            }} />
+                type='font-awesome'
+                name={Platform.OS === 'android' ? 'cog' : 'cog'}></Icon>
+            }} /> */}
             <Drawer.Screen 
             name="Test" 
             component={TestScreen}
