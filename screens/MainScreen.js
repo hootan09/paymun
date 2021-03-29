@@ -27,28 +27,28 @@ const MainScreen = ({navigation}) => {
         })
     }, [navigation]);
 
-    const LogOut = () =>{
-        function logOutLogic(){
-            navigation.replace("SignIn");
-        }
-        if(Platform.OS == 'android' || Platform.OS == 'ios'){
-            Alert.alert(
-                "LogOut",
-                "Do You Want to LogOut?",
-                [
-                  {
-                    text: "Cancel",
-                    onPress: () => console.log("Cancel Pressed"),
-                    style: "cancel"
-                  },
-                  { text: "OK", onPress: () => logOutLogic() }
-                ],
-                { cancelable: false }
-              );
-        }else{
-            logOutLogic();
-        }
-    }
+    // const LogOut = () =>{
+    //     function logOutLogic(){
+    //         navigation.replace("SignIn");
+    //     }
+    //     if(Platform.OS == 'android' || Platform.OS == 'ios'){
+    //         Alert.alert(
+    //             "LogOut",
+    //             "Do You Want to LogOut?",
+    //             [
+    //               {
+    //                 text: "Cancel",
+    //                 onPress: () => console.log("Cancel Pressed"),
+    //                 style: "cancel"
+    //               },
+    //               { text: "OK", onPress: () => logOutLogic() }
+    //             ],
+    //             { cancelable: false }
+    //           );
+    //     }else{
+    //         logOutLogic();
+    //     }
+    // }
 
     const DrawerContent = (props) => (
       <View>
@@ -76,10 +76,10 @@ const MainScreen = ({navigation}) => {
                   <Image source={logoblue} style={{ width:200, height: 90 }} />
                 </View>
                 <DrawerItemList styles={styles.navItem} {...props} />
-                <DrawerItem styles={styles.navItem} label="Logout" onPress={LogOut} icon={() => <Icon
+                {/* <DrawerItem styles={styles.navItem} label="Logout" onPress={LogOut} icon={() => <Icon
                 size={23}
                 name={Platform.OS === 'android' ? 'star' : 'star'}></Icon>
-                } />
+                } /> */}
               </DrawerContentScrollView>
             )
           }}
