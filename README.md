@@ -1,11 +1,11 @@
-![alt text](https://raw.githubusercontent.com/hootan09/paymun/main/tmp/1.jpg)
+<img src="https://raw.githubusercontent.com/hootan09/paymun/main/tmp/1.jpg" width="50%">
 
-![alt text2](https://raw.githubusercontent.com/hootan09/paymun/main/tmp/2.jpg)
+<img src="https://raw.githubusercontent.com/hootan09/paymun/main/tmp/2.jpg" width="50%">
 
-![alt text3](https://raw.githubusercontent.com/hootan09/paymun/main/tmp/3.jpg)
+<img src="https://raw.githubusercontent.com/hootan09/paymun/main/tmp/3.jpg" width="50%">
 
-![alt text4](https://raw.githubusercontent.com/hootan09/paymun/main/tmp/4.jpg)
+<img src="https://raw.githubusercontent.com/hootan09/paymun/main/tmp/4.jpg" width="50%">
 
-![alt text5](https://raw.githubusercontent.com/hootan09/paymun/main/tmp/5.jpg)
+<img src="https://raw.githubusercontent.com/hootan09/paymun/main/tmp/5.jpg" width="50%">
 
-![alt text6](https://raw.githubusercontent.com/hootan09/paymun/main/tmp/6.jpg)
+<img src="https://raw.githubusercontent.com/hootan09/paymun/main/tmp/6.jpg" width="50%">
