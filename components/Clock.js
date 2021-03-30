@@ -13,6 +13,7 @@ const  Clock = ({navigation})  => {
     }, [navigation]);
 
     useEffect(() => {
+        clearInterval(timer)
         getCurrentTime();
         timer = setInterval(() => {
             getCurrentTime();

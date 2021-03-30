@@ -55,7 +55,12 @@ const UserMenu = (props) => {
                 onPress: () => console.log("Cancel Pressed"),
                 style: "cancel"
               },
-              { text: "OK", onPress: () => logOutLogic() }
+              { text: "OK", onPress: () => {
+                _menu.hide();
+                logOutLogic()
+              }
+
+               }
             ],
             { cancelable: false }
           );
@@ -87,7 +92,10 @@ const UserMenu = (props) => {
             </Text>
           )
         }>
-        <MenuItem onPress={() => {props.navigation.navigate("Profile")}}>
+        <MenuItem onPress={() => {
+          _menu.hide();
+          props.navigation.navigate("Profile")
+          }}>
             <View style={{
                 paddingVertical: 15,
                 paddingHorizontal: 10,
