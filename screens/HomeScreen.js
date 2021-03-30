@@ -1,7 +1,8 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
-import TopHeader from '../components/TopHeader';
 import {Button} from 'react-native-elements'
+
+import TopHeader from '../components/TopHeader'
 
 const HomeScreen = ({navigation}) => {
 
