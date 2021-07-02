@@ -1,4 +1,4 @@
-export const postData = async() => {
+export const post = async() => {
     try {
       let res = await fetch('https://consultant.myrayzan.ir/api/v1/signin', {
         method: 'POST',

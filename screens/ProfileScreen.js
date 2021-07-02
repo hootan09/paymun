@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { StyleSheet, View, KeyboardAvoidingView } from 'react-native'
 import { Text, Avatar, Input, Button } from 'react-native-elements'
 import * as ImagePicker from 'expo-image-picker';
-import TopHeader from '../components/TopHeader';
+import TopHeader from '../Components/TopHeader';
 
 const ProfileScreen = ({navigation, route}) => {
     
