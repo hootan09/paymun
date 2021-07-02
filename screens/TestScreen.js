@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, Button } from 'react-native'
-import TopHeader from '../components/TopHeader'
+import TopHeader from '../Components/TopHeader'
 
 const TestScreen = ({navigation}) => {
     return (

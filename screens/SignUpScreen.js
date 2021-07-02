@@ -37,7 +37,7 @@ const SignUpScreen = ({navigation}) => {
     };
 
     const sendCode = () =>{
-        //if signup is os change to profile for set password and avatar
+        //if signup is ok change to profile for set password and avatar
         // navigation.navigate("Profile" , {phoneNumber: phoneNumber});
         clearInterval(timerInstant.interval);
         clearTimeout(timerInstant.timeout);

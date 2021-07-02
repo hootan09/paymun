@@ -2,8 +2,8 @@ import React from 'react'
 import { StyleSheet, KeyboardAvoidingView } from 'react-native'
 import {Button} from 'react-native-elements'
 
-import TopHeader from "../components/TopHeader";
-import Clock from '../components/Clock' 
+import TopHeader from "../Components/TopHeader";
+import Clock from '../Components/Clock' 
 
 const TimeSheetScreen = ({navigation}) => {
 
