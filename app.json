@@ -2,6 +2,8 @@
   "expo": {
     "name": "peymun-app",
     "slug": "peymun-app",
+    "privacy": "public",
+    "description": "pamun private project",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -20,6 +22,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "paymun.app",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

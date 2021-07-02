@@ -7,7 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import SignInScreen from './screens/SignInScreen';
 import SignUpScreen from './screens/SignUpScreen';
-import HomeScreen from './screens/HomeScreen';
+// import HomeScreen from './screens/HomeScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import MainScreen from './screens/MainScreen';
 

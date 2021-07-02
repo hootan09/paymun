@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-import { StyleSheet, Text, View, KeyboardAvoidingView } from 'react-native'
+import { StyleSheet, Text, View, KeyboardAvoidingView, Alert} from 'react-native'
 import { Button, Input, Image } from 'react-native-elements'
 import logoblue from "../assets/logoblue.png";
 
@@ -23,6 +23,26 @@ const SignInScreen = ({navigation}) => {
         navigation.replace("Main");
     }
 
+    const postData = async() => {
+        try {
+          let res = await fetch('https://consultant.myrayzan.ir/api/v1/signin', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              username: "09359578994",
+              password: "123456789"
+            }),
+          });
+          res = await res.json();
+          console.log(res)
+          Alert.alert('onPress');
+        } catch (e) {
+          console.error(e);
+        }
+      }
+
     return (
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
             {/* <Image source={{ uri: 'https://www.freepnglogos.com/uploads/instagram-logos-png-images-free-download-2.png'}} style={{ width:200, height: 200}} /> */}
@@ -33,6 +53,7 @@ const SignInScreen = ({navigation}) => {
                 <View style={{ height: 50}} />
             </View>
 
+            <Button containerStyle={styles.button} onPress={()=> postData()} title="test" />
             <Button containerStyle={styles.button} onPress={signIn} title="SignIn" />
             <Button containerStyle={styles.button} onPress={()=>{navigation.navigate('SignUp')}} type="outline" title="SignUp" />
         </KeyboardAvoidingView>
