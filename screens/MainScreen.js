@@ -7,6 +7,7 @@ import TestScreen from './TestScreen';
 import HomeScreen from './HomeScreen';
 import ProfileScreen from './ProfileScreen';
 import TimeSheetScreen from './TimeSheetScreen';
+import ClockInScreen from './ClockInScreen';
 
 import IMAGES from "../constants/Images";
 import COLORS from "../constants/Colors";
@@ -105,6 +106,15 @@ const MainScreen = ({navigation}) => {
                   size={23}
                   type='font-awesome'
                   name={Platform.OS === 'android' ? 'shopping-cart' : 'shopping-cart'}></Icon>
+              }} />
+              <Drawer.Screen 
+              name="ClockIn" 
+              component={ClockInScreen}  
+              options={{
+                drawerIcon: () => <Icon
+                  size={23}
+                  type='font-awesome'
+                  name={Platform.OS === 'android' ? 'star' : 'star'}></Icon>
               }} />
             {/* <Drawer.Screen 
             name="Profile" 
