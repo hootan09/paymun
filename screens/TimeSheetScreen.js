@@ -18,7 +18,7 @@ const TimeSheetScreen = ({navigation}) => {
             {navigation.toggleDrawer && <TopHeader navigation={navigation} title="Time Sheet" />}
             <KeyboardAvoidingView behavior="padding" style={styles.container}>
                 <Clock navigation={navigation}/>
-                <Button containerStyle={styles.button}  buttonStyle={{backgroundColor: COLORS.YELLOW}} raised onPress={ClockIn} title="ClockIn" />
+                <Button containerStyle={styles.button}  buttonStyle={{backgroundColor: COLORS.GREEN}} raised onPress={ClockIn} title="ClockIn" />
             </KeyboardAvoidingView>
         </>
     )

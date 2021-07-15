@@ -8,5 +8,6 @@ export default {
     GRAY: "#7C7C7C",
     LIGHT_GRAY: "#969696",
     EXTRA_LIGHT_GRAY: "#E5E5E5",
+    GREEN: "#0099a8",
   };
   
