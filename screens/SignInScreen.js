@@ -5,7 +5,7 @@ import { Button, Input, Image } from 'react-native-elements'
 import IMAGES from "../constants/Images";
 import FONTS from "../constants/Fonts";
 import COLORS from "../constants/Colors";
-import {post} from '../Components/Networking';
+import {post} from '../services/paymunService';
 
 const SignInScreen = ({navigation}) => {
     
