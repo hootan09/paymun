@@ -9,6 +9,7 @@ import ProfileScreen from './ProfileScreen';
 import TimeSheetScreen from './TimeSheetScreen';
 
 import IMAGES from "../constants/Images";
+import COLORS from "../constants/Colors";
 
 const Drawer = createDrawerNavigator();
 
@@ -54,13 +55,13 @@ const MainScreen = ({navigation}) => {
       <View>
         <View
           style={{
-            backgroundColor: '#f50057',
+            backgroundColor: COLORS.HEART,
             height: 140,
             alignItems: 'center',
             justifyContent: 'center',
           }}
         >
-          <Text style={{ color: 'white', fontSize: 30 }}>
+          <Text style={{ color: COLORS.WHITE, fontSize: 30 }}>
             Header
           </Text>
         </View>
@@ -84,7 +85,7 @@ const MainScreen = ({navigation}) => {
             )
           }}
           drawerContentOptions={{
-            activeTintColor: '#333e48',
+            activeTintColor: COLORS.ACTIVE,
             itemStyle: { marginVertical: 1 },
           }}>
             <Drawer.Screen 

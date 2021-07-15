@@ -1,6 +1,9 @@
 import React, { useState, useLayoutEffect, useEffect } from 'react';
 import { View, Text, StyleSheet, Platform } from 'react-native';
 
+import COLORS from '../constants/Colors';
+import FONTS from "../constants/Fonts"
+
 const  Clock = ({navigation})  => {
     const [currentTime, setCurrentTime] = useState(null);
     const [currentDay, setCurrentDay] = useState(null);
@@ -78,15 +81,15 @@ const styles = StyleSheet.create(
       fontSize: 30,
       textAlign: "center",
       margin: 10,
-      color: 'black',
-      fontWeight: "bold"
+      color: COLORS.BLACK,
+      fontWeight: FONTS.BOLD.toLowerCase()
     },
     timeText: {
         fontSize: 50,
-        color: '#f44336'
+        color: COLORS.HEART
       },
       daysText: {
-        color: '#2196f3',
+        color: COLORS.ACTIVE,
         fontSize: 25,
         paddingBottom: 0
       }

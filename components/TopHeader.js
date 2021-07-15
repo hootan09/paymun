@@ -5,27 +5,28 @@ import Menu, {MenuItem, MenuDivider} from 'react-native-material-menu';
 import {Header, Avatar, Icon} from 'react-native-elements'
 
 import IMAGES from '../constants/Images';
+import COLORS from "../constants/Colors";
 
 export default function TopHeader({navigation, title}) {
 
     return (
         <Header
-        leftComponent={{ icon: 'menu', color: '#fff', onPress:()=>{navigation.toggleDrawer()} }}
-            centerComponent={{ text: title, style: { color: '#fff' } }}
+        leftComponent={{ icon: 'menu', color: COLORS.BLACK, onPress:()=>{navigation.toggleDrawer()} }}
+            centerComponent={{ text: title, style: { color: COLORS.WHITE } }}
             // rightComponent={{ icon: 'home', color: '#fff', onPress:()=>{navigation.replace("Main")} }}
             rightComponent={
                 <View style={{flexDirection:'row'}}>
                     <TaskMenu
                         menutext="Tasl"
                         menustyle={{marginRight: 24}}
-                        textStyle={{color: 'white'}}
+                        textStyle={{color: COLORS.WHITE}}
                         navigation={navigation}
                         isIcon={true}
                     />
                     <UserMenu
                         menutext="User"
                         menustyle={{marginRight: 14}}
-                        textStyle={{color: 'white'}}
+                        textStyle={{color: COLORS.WHITE}}
                         navigation={navigation}
                         isIcon={true}
                     />
@@ -112,7 +113,7 @@ const UserMenu = (props) => {
                 </Icon>
                 <Text style={{
                         fontSize: 16,
-                        color: "black"
+                        color: COLORS.BLACK
                     }}> Settings</Text>
             </View>
         </MenuItem>
@@ -136,7 +137,7 @@ const UserMenu = (props) => {
                 </Icon>
                 <Text style={{
                         fontSize: 16,
-                        color: "black"
+                        color: COLORS.BLACK
                     }}> Logout</Text>
             </View>
         </MenuItem>
@@ -158,7 +159,7 @@ const TaskMenu = (props) => {
             <Icon
             name='plus-circle'
             type='font-awesome'
-            color='#28a745'
+            color={COLORS.BLACK}
             size={35}
             onPress={() => _menu.show()} />
           ) : (

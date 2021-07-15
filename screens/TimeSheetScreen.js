@@ -5,6 +5,8 @@ import {Button} from 'react-native-elements'
 import TopHeader from "../Components/TopHeader";
 import Clock from '../Components/Clock' 
 
+import COLORS from "../constants/Colors"
+
 const TimeSheetScreen = ({navigation}) => {
 
     const ClockIn = () =>{
@@ -16,7 +18,7 @@ const TimeSheetScreen = ({navigation}) => {
             {navigation.toggleDrawer && <TopHeader navigation={navigation} title="Time Sheet" />}
             <KeyboardAvoidingView behavior="padding" style={styles.container}>
                 <Clock navigation={navigation}/>
-                <Button containerStyle={styles.button}  buttonStyle={{backgroundColor:'#0099a8'}} raised onPress={ClockIn} title="ClockIn" />
+                <Button containerStyle={styles.button}  buttonStyle={{backgroundColor: COLORS.YELLOW}} raised onPress={ClockIn} title="ClockIn" />
             </KeyboardAvoidingView>
         </>
     )
@@ -30,7 +32,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-start',
         padding: 10,
-        backgroundColor: 'white'
+        backgroundColor: COLORS.WHITE
     },
     button: {
         width: 200,
