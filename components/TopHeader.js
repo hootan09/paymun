@@ -4,6 +4,8 @@ import 'react-native-gesture-handler';
 import Menu, {MenuItem, MenuDivider} from 'react-native-material-menu';
 import {Header, Avatar, Icon} from 'react-native-elements'
 
+import IMAGES from '../constants/Images';
+
 export default function TopHeader({navigation, title}) {
 
     return (
@@ -35,7 +37,7 @@ export default function TopHeader({navigation, title}) {
 
 const UserMenu = (props) => {
   
-    const [avatar, setAvatar] = useState('https://www.clipartmax.com/png/small/268-2688863_face-head-male-man-person-profile-silhouette-profile-silhouette.png');
+    const [avatar, setAvatar] = useState(IMAGES.AVATAR_SERVER);
   
     let _menu = null;
 
@@ -79,7 +81,7 @@ const UserMenu = (props) => {
                     rounded
                     size="small"
                     source={{
-                        uri: avatar
+                        uri: IMAGES.AVATAR_SERVER
                     }}
                     activeOpacity={0.7}
                     onPress={() => _menu.show()}

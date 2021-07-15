@@ -8,7 +8,7 @@ import HomeScreen from './HomeScreen';
 import ProfileScreen from './ProfileScreen';
 import TimeSheetScreen from './TimeSheetScreen';
 
-import logoblue from "../assets/logoblue.png";
+import IMAGES from "../constants/Images";
 
 const Drawer = createDrawerNavigator();
 
@@ -73,7 +73,7 @@ const MainScreen = ({navigation}) => {
             return (
               <DrawerContentScrollView style={styles.sideBar} {...props}>
                 <View style={{flex:1,justifyContent: 'flex-start', alignItems: 'center'}}>
-                  <Image source={logoblue} style={{ width:200, height: 90 }} />
+                  <Image source={IMAGES.PAYMUN} style={{ width:200, height: 90 }} />
                 </View>
                 <DrawerItemList styles={styles.navItem} {...props} />
                 {/* <DrawerItem styles={styles.navItem} label="Logout" onPress={LogOut} icon={() => <Icon

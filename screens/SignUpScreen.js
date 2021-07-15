@@ -2,6 +2,9 @@ import React, {useState, useLayoutEffect, } from 'react'
 import { StyleSheet, View, KeyboardAvoidingView } from 'react-native';
 import { Input, Text, Button } from 'react-native-elements';
 
+import COLORS from "../constants/Colors"
+import FONTS from "../constants/Fonts"
+
 const SignUpScreen = ({navigation}) => {
 
     const [phoneNumber, setPhoneNumber] = useState('');
@@ -84,7 +87,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         padding: 10,
-        backgroundColor: 'white'
+        backgroundColor: COLORS.WHITE
     },
     inputContainer:{
         width: 300

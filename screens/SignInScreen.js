@@ -2,8 +2,9 @@ import React, {useState, useEffect} from 'react'
 
 import { StyleSheet, Text, View, KeyboardAvoidingView, Alert} from 'react-native'
 import { Button, Input, Image } from 'react-native-elements'
-import logoblue from "../assets/logoblue.png";
-
+import IMAGES from "../constants/Images";
+import FONTS from "../constants/Fonts";
+import COLORS from "../constants/Colors";
 import {post} from '../Components/Networking';
 
 const SignInScreen = ({navigation}) => {
@@ -37,7 +38,7 @@ const SignInScreen = ({navigation}) => {
     return (
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
             {/* <Image source={{ uri: 'https://www.freepnglogos.com/uploads/instagram-logos-png-images-free-download-2.png'}} style={{ width:200, height: 200}} /> */}
-            <Image source={logoblue} style={{ width:200, height: 90,}} />
+            <Image source={IMAGES.PAYMUN} style={{ width:200, height: 90,}} />
             <View style= {styles.inputContainer}>
                 <Input placeholder= "Phone Number:" autoFocus value={phoneNumber} onChangeText={text =>setPhoneNumber(text)}/>
                 <Input placeholder= "Password:" type="password" secureTextEntry value={password} onChangeText={text =>setPassword(text)}/>
@@ -59,13 +60,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         padding: 10,
-        backgroundColor: 'white'
+        backgroundColor: COLORS.WHITE,
+        
     },
     inputContainer: {
         width: 300
     },
     button: {
         width: 200,
-        marginTop: 10
+        marginTop: 10,
+        fontFamily: FONTS.EXTRA_BOLD,
     }
 })

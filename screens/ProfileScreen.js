@@ -4,12 +4,15 @@ import { Text, Avatar, Input, Button } from 'react-native-elements'
 import * as ImagePicker from 'expo-image-picker';
 import TopHeader from '../Components/TopHeader';
 
+import IMAGES from "../constants/Images";
+import COLORS from "../constants/Colors";
+
 const ProfileScreen = ({navigation, route}) => {
     
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
-    const [avatar, setAvatar] = useState('https://www.clipartmax.com/png/small/268-2688863_face-head-male-man-person-profile-silhouette-profile-silhouette.png');
+    const [avatar, setAvatar] = useState(IMAGES.AVATAR_SERVER);
 
     const submitProfile = () => {
         if(password != confirmPassword){
@@ -52,7 +55,7 @@ const ProfileScreen = ({navigation, route}) => {
                     rounded
                     size="xlarge"
                     source={{
-                        uri: avatar
+                        uri: IMAGES.AVATAR_SERVER
                     }}
                     activeOpacity={0.7}
                     onPress={addAvatar}
@@ -81,7 +84,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-start',
         padding: 10,
-        backgroundColor: 'white'
+        backgroundColor: COLORS.WHITE
     },
     avatar:{
         padding: 10,
