@@ -16,13 +16,13 @@ export default function TopHeader({navigation, title}) {
             // rightComponent={{ icon: 'home', color: '#fff', onPress:()=>{navigation.replace("Main")} }}
             rightComponent={
                 <View style={{flexDirection:'row'}}>
-                    <TaskMenu
+                    {/* <TaskMenu
                         menutext="Tasl"
                         menustyle={{marginRight: 24}}
                         textStyle={{color: COLORS.WHITE}}
                         navigation={navigation}
                         isIcon={true}
-                    />
+                    /> */}
                     <UserMenu
                         menutext="User"
                         menustyle={{marginRight: 14}}
@@ -147,43 +147,43 @@ const UserMenu = (props) => {
   );
 };
 
-const TaskMenu = (props) => {
+// const TaskMenu = (props) => {
 
-    let _menu = null;
-  return (
-    <View style={props.menustyle}>
-      <Menu
-        ref={(ref) => (_menu = ref)}
-        button={
-          props.isIcon ? (
-            <Icon
-            name='plus-circle'
-            type='font-awesome'
-            color={COLORS.BLACK}
-            size={35}
-            onPress={() => _menu.show()} />
-          ) : (
-            <Text
-              onPress={() => _menu.show()}
-               style={props.textStyle}>
-              {props.menutext}
-            </Text>
-          )
-        }>
-        <MenuItem onPress={() => {props.navigation.navigate("Profile")}}>
-          Test 1
-        </MenuItem>
+//     let _menu = null;
+//   return (
+//     <View style={props.menustyle}>
+//       <Menu
+//         ref={(ref) => (_menu = ref)}
+//         button={
+//           props.isIcon ? (
+//             <Icon
+//             name='plus-circle'
+//             type='font-awesome'
+//             color={COLORS.BLACK}
+//             size={35}
+//             onPress={() => _menu.show()} />
+//           ) : (
+//             <Text
+//               onPress={() => _menu.show()}
+//                style={props.textStyle}>
+//               {props.menutext}
+//             </Text>
+//           )
+//         }>
+//         <MenuItem onPress={() => {props.navigation.navigate("Profile")}}>
+//           Test 1
+//         </MenuItem>
 
-        <MenuItem disabled>Disabled Menu Item 2</MenuItem>
+//         <MenuItem disabled>Disabled Menu Item 2</MenuItem>
 
-        <MenuDivider />
+//         <MenuDivider />
 
-        <MenuItem onPress={()=>{}}>
-          Test 3
-        </MenuItem>
+//         <MenuItem onPress={()=>{}}>
+//           Test 3
+//         </MenuItem>
 
-      </Menu>
-    </View>
-  );
-};
+//       </Menu>
+//     </View>
+//   );
+// };
 
