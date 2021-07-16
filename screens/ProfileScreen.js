@@ -12,7 +12,7 @@ const ProfileScreen = ({navigation, route}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
-    const [avatar, setAvatar] = useState(IMAGES.AVATAR_SERVER);
+    const [avatar, setAvatar] = useState(IMAGES.AVATAR);
 
     const submitProfile = () => {
         if(password != confirmPassword){

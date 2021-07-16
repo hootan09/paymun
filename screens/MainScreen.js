@@ -75,7 +75,7 @@ const MainScreen = ({navigation}) => {
             return (
               <DrawerContentScrollView style={styles.sideBar} {...props}>
                 <View style={{flex:1,justifyContent: 'flex-start', alignItems: 'center'}}>
-                  <Image source={IMAGES.PAYMUN} style={{ width:200, height: 90 }} />
+                  <Image source={{uri: IMAGES.PAYMUN}} style={{ width:200, height: 90 }} />
                 </View>
                 <DrawerItemList styles={styles.navItem} {...props} />
                 {/* <DrawerItem styles={styles.navItem} label="Logout" onPress={LogOut} icon={() => <Icon

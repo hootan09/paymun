@@ -38,7 +38,7 @@ const SignInScreen = ({navigation}) => {
     return (
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
             {/* <Image source={{ uri: 'https://www.freepnglogos.com/uploads/instagram-logos-png-images-free-download-2.png'}} style={{ width:200, height: 200}} /> */}
-            <Image source={IMAGES.PAYMUN} style={{ width:200, height: 90,}} />
+            <Image source={{uri: IMAGES.PAYMUN}} style={{ width:200, height: 90,}} />
             <View style= {styles.inputContainer}>
                 <Input placeholder= "Phone Number:" autoFocus value={phoneNumber} onChangeText={text =>setPhoneNumber(text)}/>
                 <Input placeholder= "Password:" type="password" secureTextEntry value={password} onChangeText={text =>setPassword(text)}/>

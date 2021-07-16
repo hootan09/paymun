@@ -11,7 +11,7 @@ import IMAGES from "../constants/Images";
 const ClockInScreen = ({navigation}) => {
 
     const [Note, setNote] = useState('');
-    const [Pic, setPic] = useState('');
+    const [Pic, setPic] = useState(IMAGES.CAMERA);
     const [selectedProject, setSelectedProject] = useState();
     const [selectedCategory, setSelectedCategory] = useState();
 

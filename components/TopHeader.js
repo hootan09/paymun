@@ -38,7 +38,7 @@ export default function TopHeader({navigation, title}) {
 
 const UserMenu = (props) => {
   
-    const [avatar, setAvatar] = useState(IMAGES.AVATAR_SERVER);
+    const [avatar, setAvatar] = useState(IMAGES.AVATAR);
   
     let _menu = null;
 
@@ -82,7 +82,7 @@ const UserMenu = (props) => {
                     rounded
                     size="small"
                     source={{
-                        uri: IMAGES.AVATAR_SERVER
+                        uri: IMAGES.AVATAR
                     }}
                     activeOpacity={0.7}
                     onPress={() => _menu.show()}
