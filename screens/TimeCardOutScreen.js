@@ -7,10 +7,18 @@ import Clock from '../Components/Clock'
 
 import COLORS from "../constants/Colors"
 
-const TimeSheetScreen = ({navigation}) => {
+const TimeCardOutScreen = ({navigation}) => {
 
-    const ClockIn = () =>{
+    const Lunch = () =>{
+        navigation.navigate("Lunch");
+    }
 
+    const ClockOut = () =>{
+        navigation.navigate("Dailies", {type: "ClockOut"});
+    }
+
+    const Swap = () =>{
+        navigation.navigate("Dailies" , {type: "Swap"});
     }
 
     return (
@@ -18,13 +26,15 @@ const TimeSheetScreen = ({navigation}) => {
             {navigation.toggleDrawer && <TopHeader navigation={navigation} title="Time Sheet" />}
             <KeyboardAvoidingView behavior="padding" style={styles.container}>
                 <Clock navigation={navigation}/>
-                <Button containerStyle={styles.button}  buttonStyle={{backgroundColor: COLORS.GREEN}} raised onPress={ClockIn} title="ClockIn" />
+                <Button containerStyle={styles.button}  buttonStyle={{backgroundColor: COLORS.GREEN}} raised onPress={Lunch} title="Lunch & Break" />
+                <Button containerStyle={styles.button}  buttonStyle={{backgroundColor: COLORS.HEART}} raised onPress={ClockOut} title="ClockOut" />
+                <Button containerStyle={styles.button}  buttonStyle={{backgroundColor: COLORS.GREEN}} raised onPress={Swap} title="Swap" />
             </KeyboardAvoidingView>
         </>
     )
 }
 
-export default TimeSheetScreen
+export default TimeCardOutScreen
 
 const styles = StyleSheet.create({
     container:{

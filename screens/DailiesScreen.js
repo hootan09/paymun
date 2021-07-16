@@ -8,8 +8,10 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import COLORS from "../constants/Colors";
 import IMAGES from "../constants/Images";
 
-const ClockInScreen = ({navigation}) => {
+const DailiesScreen = ({route,navigation}) => {
 
+    const { type } = route.params || "none"; //the type is "swap" or "clockout"
+    
     const [Note, setNote] = useState('');
     const [Pic, setPic] = useState(IMAGES.CAMERA);
     const [selectedProject, setSelectedProject] = useState();
@@ -19,9 +21,9 @@ const ClockInScreen = ({navigation}) => {
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
 
-    const ClockInToServer = () => {
-        console.log('ClockInToServer');
-        navigation.navigate("TimeCardOut")
+    const BackToTimeCard = () => {
+        console.log('Back toTime Card');
+        navigation.navigate("TimeCard")
     }
 
     const addImage = async () =>{
@@ -64,6 +66,7 @@ const ClockInScreen = ({navigation}) => {
             <TopHeader navigation={navigation} title="ClockIn" />
             <KeyboardAvoidingView behavior="padding" style={styles.container}>
                 <View>
+                    { type && <Text h3>You Are Choose {type}</Text>}
                     <View style={{flexDirection: 'row', marginTop: 50}}>
                     <Text h5>Date: </Text>
                         <Button containerStyle={styles.button, {width:200}}  buttonStyle={{backgroundColor: COLORS.YELLOW}} raised onPress={showDatepicker} title={"Date: " + date.toLocaleDateString('en-US')} />
@@ -98,7 +101,7 @@ const ClockInScreen = ({navigation}) => {
                         <Picker.Item label="JavaScript" value="js" />
                     </Picker>
                 </View>
-                <View style={{ flexDirection: 'row', marginTop: 50 }}>
+                {/* <View style={{ flexDirection: 'row', marginTop: 50 }}>
                     <Text h5>Category *: </Text>
                     <Picker
                     style={{height: 40, width: 200}}
@@ -112,7 +115,7 @@ const ClockInScreen = ({navigation}) => {
                         <Picker.Item label="cat1" value="cat1" />
                         <Picker.Item label="cat2" value="cat2" />
                     </Picker>
-                </View>
+                </View> */}
                 <Input placeholder='Notes' label="Note:" value={Note} onChangeText={text =>setNote(text)} multiline={true} />
                 <Button containerStyle={styles.button, {width:200}}  buttonStyle={{backgroundColor: COLORS.YELLOW}} raised onPress={addImage} title="ChooseImage" />
                 <Image
@@ -120,13 +123,13 @@ const ClockInScreen = ({navigation}) => {
                 style={{width:100, height: 100, marginTop: 10, borderRadius:10}}
                 PlaceholderContent={<ActivityIndicator />}
                 />
-                <Button containerStyle={styles.button}  buttonStyle={{backgroundColor: COLORS.ACTIVE}} raised onPress={ClockInToServer} title="Submit" />
+                <Button containerStyle={styles.button}  buttonStyle={{backgroundColor: COLORS.ACTIVE}} raised onPress={BackToTimeCard} title="Submit" />
             </KeyboardAvoidingView>
         </>
     )
 }
 
-export default ClockInScreen
+export default DailiesScreen
 
 const styles = StyleSheet.create({
     container:{

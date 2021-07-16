@@ -3,11 +3,13 @@ import { createDrawerNavigator, DrawerContentScrollView, DrawerItem, DrawerItemL
 import { StyleSheet, Alert, Platform, View } from 'react-native';
 import { Image, Icon } from "react-native-elements";
 
-import TestScreen from './TestScreen';
+import LunchScreen from './LunchScreen';
 import HomeScreen from './HomeScreen';
 import ProfileScreen from './ProfileScreen';
-import TimeSheetScreen from './TimeSheetScreen';
+import TimeCardScreen from './TimeCardScreen';
+import TimeCardOutScreen from './TimeCardOutScreen';
 import ClockInScreen from './ClockInScreen';
+import DailiesScreen from "./DailiesScreen";
 
 import IMAGES from "../constants/Images";
 import COLORS from "../constants/Colors";
@@ -99,8 +101,8 @@ const MainScreen = ({navigation}) => {
                 name={Platform.OS === 'android' ? 'home' : 'home'}></Icon>
             }} />
             <Drawer.Screen 
-              name="TimeSheet" 
-              component={TimeSheetScreen}  
+              name="TimeCard" 
+              component={TimeCardScreen}  
               options={{
                 drawerIcon: () => <Icon
                   size={23}
@@ -126,13 +128,31 @@ const MainScreen = ({navigation}) => {
                 name={Platform.OS === 'android' ? 'cog' : 'cog'}></Icon>
             }} /> */}
             <Drawer.Screen 
-            name="Test" 
-            component={TestScreen}
+            name="Lunch" 
+            component={LunchScreen}
             options={{
               drawerIcon: () => <Icon
                 size={23}
                 name={Platform.OS === 'android' ? 'star' : 'star'}></Icon>
             }} />
+            <Drawer.Screen 
+              name="TimeCardOut" 
+              component={TimeCardOutScreen}  
+              options={{
+                drawerIcon: () => <Icon
+                  size={23}
+                  type='font-awesome'
+                  name={Platform.OS === 'android' ? 'shopping-cart' : 'shopping-cart'}></Icon>
+              }} />
+            <Drawer.Screen 
+              name="Dailies" 
+              component={DailiesScreen}  
+              options={{
+                drawerIcon: () => <Icon
+                  size={23}
+                  type='font-awesome'
+                  name={Platform.OS === 'android' ? 'shopping-cart' : 'shopping-cart'}></Icon>
+              }} />
         </Drawer.Navigator>
     )
 }
