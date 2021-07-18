@@ -10,7 +10,7 @@ import {TokenContext} from "../Components/TokenContext";
 import IMAGES from "../constants/Images";
 import FONTS from "../constants/Fonts";
 import COLORS from "../constants/Colors";
-import {post} from '../services/paymunService';
+import {POST, BODY, URLS} from '../services/paymunService';
 
 const SignInScreen = ({navigation}) => {
     
@@ -28,32 +28,35 @@ const SignInScreen = ({navigation}) => {
     //     // }
     // }, []);
 
-    const signIn = () =>{
-        console.log(phoneNumber, password);
+    const signIn = async () =>{
         // navigation.replace("Main");
-        
-        let token = {} //from api
-        
-        AsyncStorage.setItem("Token", JSON.stringify(token))
-        .then(()=>{
-            //the stack navigator automatically send to main screen
-            setStoredToken(token);
-        })
-        .catch(err => {
-            console.log(err);
-            Alert.alert('Error in Sigin api call');
-        })
-
-    }
-
-    const postData = async() => {
         try {
-          let res = await post();
-          Alert.alert('onPress');
-        } catch (e) {
-          console.error(e);
-        }
-      }
+            console.log(phoneNumber, password);
+            let res = await POST( URLS.CREATE_TOKEN, 
+                {
+                    'content-type': 'application/json'
+                }, 
+                {
+                    username: phoneNumber,
+                    password: password
+                });
+            if(!res.result.success){
+                return Alert.alert(res.result.message);
+            }else{
+                AsyncStorage.setItem("Token", JSON.stringify(res.token))
+                .then(()=>{
+                    //the stack navigator automatically send to main screen
+                    setStoredToken(res.token);
+                })
+                .catch(err => {
+                    console.log(err);
+                    Alert.alert('Error in set Token to Application');
+                })
+            }
+          } catch (e) {
+            console.error(e);
+          }
+    }
 
     return (
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
@@ -63,8 +66,6 @@ const SignInScreen = ({navigation}) => {
                 <Input placeholder= "Password:" type="password" secureTextEntry value={password} onChangeText={text =>setPassword(text)}/>
                 <View style={{ height: 50}} />
             </View>
-
-            <Button containerStyle={styles.button} onPress={()=> postData()} title="test" />
             <Button containerStyle={styles.button} onPress={signIn} title="SignIn" />
             <Button containerStyle={styles.button} onPress={()=>{navigation.navigate('SignUp')}} type="outline" title="SignUp" />
         </KeyboardAvoidingView>

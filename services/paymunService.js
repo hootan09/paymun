@@ -1,17 +1,15 @@
-const BASE_URL= "https://consultant.myrayzan.ir"
+const URLS= {
+  BASE_URL: "http://paymun.net",
+  CREATE_TOKEN: "/api/account/CreateToken"
 
+}
 
-export const post = async() => {
+const POST = async(api_path, headers, body) => {
   try {
-    let res = await fetch(`${BASE_URL}/api/v1/signin`, {
+    let res = await fetch(URLS.BASE_URL + api_path, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: "09359578994",
-        password: "123456789"
-      }),
+      headers: headers,
+      body: JSON.stringify(body),
     });
     res = await res.json();
     console.log(res)
@@ -20,4 +18,9 @@ export const post = async() => {
       console.error(e);
       return null;
     }
+}
+
+module.exports = {
+  POST, 
+  URLS
 }
