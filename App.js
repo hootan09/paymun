@@ -1,5 +1,5 @@
+import React, {useState} from 'react';
 import 'react-native-gesture-handler';
-import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -9,10 +9,15 @@ import SignUpScreen from './screens/SignUpScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import MainScreen from './screens/MainScreen';
 
-import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+import {TokenContext} from "./Components/TokenContext";
+
 import COLORS from "./constants/Colors";
+
+import { useFonts } from "expo-font";
 
 const Stack = createStackNavigator();
 
@@ -23,6 +28,24 @@ const globalScreenOptions = {
 }
 
 export default function App() {
+
+  const [appReady, setAppReady] = useState(false);
+  const [storedToken, setStoredToken] = useState("");
+
+  const checkToken = () =>{
+    AsyncStorage
+    .getItem('Token')
+    .then((result)=>{
+      if(result !==null){
+        setStoredToken(JSON.parse(result));
+      }else{
+        setStoredToken(null);
+      }
+    })
+    .catch( err => console.log(err))
+  }
+
+
   const [fontLoaded] = useFonts({
     Regular: require("./assets/fonts/NunitoSans-Regular.ttf"),
     Bold: require("./assets/fonts/NunitoSans-Bold.ttf"),
@@ -33,18 +56,33 @@ export default function App() {
     SemiBold: require("./assets/fonts/NunitoSans-SemiBold.ttf"),
   });
 
-  return fontLoaded ? (
-    <NavigationContainer>
-      <StatusBar style="light" />
-      <Stack.Navigator screenOptions={globalScreenOptions}>
-        <Stack.Screen name="SignIn" component={SignInScreen} />
-        <Stack.Screen name="Main" component={MainScreen} />
-        <Stack.Screen name="SignUp" component={SignUpScreen} />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
-
-      </Stack.Navigator>
-    </NavigationContainer>
+  return (fontLoaded && appReady) ? (
+    <TokenContext.Provider value={{storedToken, setStoredToken}}>
+      <TokenContext.Consumer>
+        {({storedToken})=>(
+                <NavigationContainer>
+                <StatusBar style="light" />
+                <Stack.Navigator screenOptions={globalScreenOptions}>
+                  {storedToken ? 
+                    (<Stack.Screen name="Main" component={MainScreen} />)
+                    :
+                    (
+                      <>
+                        <Stack.Screen name="SignIn" component={SignInScreen} />
+                        <Stack.Screen name="SignUp" component={SignUpScreen} />
+                        <Stack.Screen name="Profile" component={ProfileScreen} />
+                      </>
+                    )}
+                </Stack.Navigator>
+              </NavigationContainer>
+        )}
+      </TokenContext.Consumer>
+    </TokenContext.Provider>
   ): (
-    <AppLoading />
+    <AppLoading 
+      startAsync={checkToken}
+      onFinish={() => setAppReady(true)}
+      onError={console.warn}
+    />
   );
 };

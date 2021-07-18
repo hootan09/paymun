@@ -1,8 +1,12 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { Alert, Image, View, Text, TouchableOpacity, Platform } from 'react-native';
 import 'react-native-gesture-handler';
 import Menu, {MenuItem, MenuDivider} from 'react-native-material-menu';
 import {Header, Avatar, Icon} from 'react-native-elements'
+
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+import { TokenContext } from './TokenContext'; "./TokenContext"
 
 import IMAGES from '../constants/Images';
 import COLORS from "../constants/Colors";
@@ -38,6 +42,9 @@ export default function TopHeader({navigation, title}) {
 
 const UserMenu = (props) => {
   
+    //context
+    const {storedToken, setStoredToken} = useContext(TokenContext);
+
     const [avatar, setAvatar] = useState(IMAGES.AVATAR);
   
     let _menu = null;
@@ -45,7 +52,12 @@ const UserMenu = (props) => {
   const LogOut = () =>{
     
     function logOutLogic(){
-        props.navigation.replace("SignIn");
+        AsyncStorage.removeItem("Token")
+        .then(()=>{
+          // props.navigation.replace("SignIn");
+          setStoredToken("");
+        })
+        .catch(err => console.log(err));
     }
 
     if(Platform.OS == 'android' || Platform.OS == 'ios'){

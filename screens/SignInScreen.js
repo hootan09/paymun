@@ -1,7 +1,12 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 
 import { StyleSheet, Text, View, KeyboardAvoidingView, Alert} from 'react-native'
 import { Button, Input, Image } from 'react-native-elements'
+
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+import {TokenContext} from "../Components/TokenContext";
+
 import IMAGES from "../constants/Images";
 import FONTS from "../constants/Fonts";
 import COLORS from "../constants/Colors";
@@ -12,18 +17,33 @@ const SignInScreen = ({navigation}) => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
 
-    useEffect(() => {
-        //already signin and have token
-        // if(have token){
-            // navigation.replace("Home");
-            // navigation.replace("Profile");
-        // }
-    }, []);
+    //context
+    const {storedToken, setStoredToken} = useContext(TokenContext);
+
+    // useEffect(() => {
+    //     //already signin and have token
+    //     // if(have token){
+    //         // navigation.replace("Home");
+    //         // navigation.replace("Profile");
+    //     // }
+    // }, []);
 
     const signIn = () =>{
         console.log(phoneNumber, password);
-        //if is password ok send to home
-        navigation.replace("Main");
+        // navigation.replace("Main");
+        
+        let token = {} //from api
+        
+        AsyncStorage.setItem("Token", JSON.stringify(token))
+        .then(()=>{
+            //the stack navigator automatically send to main screen
+            setStoredToken(token);
+        })
+        .catch(err => {
+            console.log(err);
+            Alert.alert('Error in Sigin api call');
+        })
+
     }
 
     const postData = async() => {
@@ -37,7 +57,6 @@ const SignInScreen = ({navigation}) => {
 
     return (
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
-            {/* <Image source={{ uri: 'https://www.freepnglogos.com/uploads/instagram-logos-png-images-free-download-2.png'}} style={{ width:200, height: 200}} /> */}
             <Image source={{uri: IMAGES.PAYMUN}} style={{ width:200, height: 90,}} />
             <View style= {styles.inputContainer}>
                 <Input placeholder= "Phone Number:" autoFocus value={phoneNumber} onChangeText={text =>setPhoneNumber(text)}/>
