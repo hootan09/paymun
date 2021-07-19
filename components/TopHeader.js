@@ -47,18 +47,21 @@ const UserMenu = (props) => {
   //context
   const {storedToken, setStoredToken} = useContext(TokenContext);
   const [avatar, setAvatar] = useState(IMAGES.AVATAR);
+  const [profile, setprofile] = useState({});
   
   useEffect(() => {
       POST(URLS.PROFILE, {
         'content-type': 'application/json',
         'Authorization': 'Bearer ' + storedToken 
-      }, {})
+      }, {}, true)
       .then(res=>{
         if(!res.result.success){
           Alert.alert('error in get profile, ',res.result.message);
         }else{
           // console.log("user:", res.user)
-          //set avatar to user
+          setprofile(res.user);
+          console.log(URLS.BASE_URL + res.user.avatar)
+          // setAvatar(); 
         }
       })
       .catch (error => console.log(error))
